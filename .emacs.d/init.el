@@ -36,6 +36,27 @@
 ;;Desktop save
 (desktop-save-mode 1)
 
+;; company mode
+(require 'company)
+(global-company-mode)
+
+(define-key company-active-map (kbd "C-n") 'company-select-next)
+(define-key company-active-map (kbd "C-p") 'company-select-previous)
+
+;; comment selection
+(global-set-key (kbd "s-/") 'comment-or-uncomment-region)
+
+;;alchemist
+(require 'alchemist)
+(add-to-list 'elixir-mode-hook 'alchemist-mode-hook)
+
+;; select underscore in word
+(modify-syntax-entry ?_ "w" elixir-mode-syntax-table)
+(modify-syntax-entry ?@ "w" elixir-mode-syntax-table)
+
+;; delete on selection
+(delete-selection-mode 1)
+
 ;;Flycheck setups
 (eval-after-load 'flycheck '(flycheck-dialyxir-setup))
 
@@ -101,4 +122,13 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
   (save-some-buffers t))
 
 (add-hook 'focus-out-hook 'save-all)
-;; end autosave
+
+;; paths for documentation lookup
+(setq alchemist-goto-erlang-source-dir "~/Projects/source/erlang/")
+(setq alchemist-goto-elixir-source-dir "~/Projects/source/elixir/")
+
+;; alchemist hook for erlang
+(defun custom-erlang-mode-hook ()
+  (define-key erlang-mode-map (kbd "M-,") 'alchemist-goto-jump-back))
+
+(add-hook 'erlang-mode-hook 'custom-erlang-mode-hook)
