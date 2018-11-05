@@ -36,6 +36,17 @@
 ;;Desktop save
 (desktop-save-mode 1)
 
+;;meta, control, super, hyper key bindings
+(setq mac-control-modifier 'control)
+(setq mac-command-modifier 'super)
+(setq mac-option-modifier 'meta)
+
+;;mac key bindings
+(global-set-key (kbd "s-s") 'save-buffer)
+(global-set-key (kbd "s-c") 'clipboard-kill-ring-save)
+(global-set-key (kbd "s-x") 'clipboard-kill-region)
+(global-set-key (kbd "s-v") 'clipboard-yank)
+
 ;; company mode
 (require 'company)
 (global-company-mode)
@@ -132,3 +143,12 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
   (define-key erlang-mode-map (kbd "M-,") 'alchemist-goto-jump-back))
 
 (add-hook 'erlang-mode-hook 'custom-erlang-mode-hook)
+
+;; recompile after save
+(setq alchemist-hooks-compile-on-save t)
+
+;; cool search on control + s
+(global-set-key (kbd "C-s") 'spacemacs/helm-file-smart-do-search-region-or-symbol)
+
+;; find file in neotree
+(global-set-key (kbd "s-f") 'neotree-find)
