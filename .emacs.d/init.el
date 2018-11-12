@@ -155,3 +155,10 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
 
 ;; mouse color
 (set-mouse-color "cyan")
+
+;; reload module on save in alchemist
+;;(eval-after-load 'elixir-mode
+;;'(add-hook 'after-save-hook
+;; '((when (alchemist-project-p)) 'alchemist-iex-reload-module)
+;; )
+;;)
