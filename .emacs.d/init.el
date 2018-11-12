@@ -152,3 +152,6 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
 
 ;; find file in neotree
 (global-set-key (kbd "s-f") 'neotree-find)
+
+;; mouse color
+(set-mouse-color "cyan")
