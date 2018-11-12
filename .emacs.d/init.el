@@ -152,3 +152,10 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
 
 ;; find file in neotree
 (global-set-key (kbd "s-f") 'neotree-find)
+
+;; reload module on save in alchemist
+;;(eval-after-load 'elixir-mode
+;;'(add-hook 'after-save-hook
+;; '((when (alchemist-project-p)) 'alchemist-iex-reload-module)
+;; )
+;;)
