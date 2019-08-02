@@ -1,3 +1,4 @@
+# It needs git completion: https://github.com/git/git/tree/master/contrib/completion
 gph() {
 	branch=$1
 	shift
