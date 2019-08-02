@@ -5,6 +5,10 @@ gph() {
 	git push origin "HEAD:$branch" $@ 
 }
 
+___git_complete() {
+        if [ -x "$(command -v __git_complete)" ]; then; __git_complete $@; fi
+}
+
 alias g='git status'
 alias ga='git add'
 alias gap='git add -p'
@@ -12,12 +16,13 @@ alias gs='git stash'
 alias gsp='git stash pop'
 alias gc='git commit'
 alias gp='git push'
-__git_complete gp _git_push
-__git_complete gph _git_checkout
+___git_complete gp _git_push
+___git_complete gph _git_checkout
 alias gco='git checkout'
-__git_complete go _git_checkout
+___git_complete go _git_checkout
 alias gd='git diff'
 alias grb='git rebase'
-__git_complete grb _git_rebase
+___git_complete grb _git_rebase
 alias grbm='git rebase origin/master'
 alias grbc='git rebase --continue'
+alias gr='git reset HEAD'
